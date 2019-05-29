@@ -185,3 +185,11 @@ add_custom_command(
 add_custom_command(
     TARGET test_kernel_split POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy "${XEUS_TEST_DIR}/test_kernel_split.py" "${CMAKE_CURRENT_BINARY_DIR}/")
+
+set(TALK_TO_ME_SOURCES
+    talk_to_me.cpp)
+
+add_executable(talk_to_me ${TALK_TO_ME_SOURCES})
+target_link_libraries(talk_to_me ${xeus_TARGET} Threads::Threads)
+
+target_compile_features(talk_to_me PRIVATE cxx_std_11)
